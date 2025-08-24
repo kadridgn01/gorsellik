@@ -42,6 +42,46 @@ a{color:var(--accent);text-decoration:none}
   padding: 0 14px;
 }
 .brand{font-weight:800}
+  .brand {
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:18px;
+}
+.logo {
+  height:28px;
+  width:auto;
+}
+
+.bottombar {
+  position: fixed;
+  bottom:0; left:0; right:0;
+  height:60px;
+  background: var(--paper);
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:30;
+}
+.nav-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  font-size:20px;
+  color:var(--ink);
+  text-decoration:none;
+}
+.nav-item span {
+  font-size:12px;
+  margin-top:2px;
+  color:var(--muted);
+}
+body {
+  padding-bottom: 70px; /* içerik nav barın altına gizlenmesin */
+}
+
 
 /* profil header */
 .header{max-width:var(--maxw);margin:0 auto;padding:16px;display:flex;
@@ -78,7 +118,15 @@ a{color:var(--accent);text-decoration:none}
 </head>
 <body>
 
-<div class="topbar"><div class="row"><div class="brand">Meytra</div></div></div>
+<div class="topbar">
+  <div class="row">
+    <div class="brand">
+      <img src="assets/logo.png" alt="logo" class="logo">
+      Görselik
+    </div>
+  </div>
+</div>
+
 
 <!-- profil header -->
 <section class="header">
@@ -181,5 +229,12 @@ btn.onclick=()=>{
   friendCount.textContent=Number(friendCount.textContent)+1;
 };
 </script>
+  <!-- alt navigasyon bar -->
+<nav class="bottombar">
+  <a href="#" class="nav-item">🏠<span>Ana Sayfa</span></a>
+  <a href="#" class="nav-item">🔍<span>Arama</span></a>
+  <a href="#" class="nav-item">👤<span>Profil</span></a>
+</nav>
+
 </body>
 </html>
