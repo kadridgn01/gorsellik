@@ -92,10 +92,10 @@ const IMG = [
 
 /* Post verisi: hepsi Fatoş'un paylaşımları */
 const POSTS = IMG.map((src,i)=>({
-  user:"fatosdursun",
+  user:"",
   avatar: IMG[assets/p6.jpg],    // p1’i avatar olarak kullan
   img: src,
-  caption: "Gönderi " + (i+1),
+  caption: "" + (i+1),
   time: i<3 ? (i===0?"3g": i===1?"2h":"5h") : (i<6?"10h":"20h")
 }));
 
