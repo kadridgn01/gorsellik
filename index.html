@@ -84,19 +84,19 @@ a{color:var(--accent);text-decoration:none}
 <script>
 /* 17 görselin tam listesi — dosya adlarınla birebir */
 const IMG = [
-  "assets/p1.jpg","assets/p2.jpg","assets/p3.jpg","assets/p4.jpg","assets/p5.jpg",
-  "assets/p6.jpg","assets/p7.jpg","assets/p8.jpg","assets/p9.jpg","assets/p10.jpg",
-  "assets/p11.jpg","assets/p12.jpg","assets/p13.jpg","assets/p14.jpg","assets/p15.jpg",
-  "assets/p16.jpg","assets/p17.jpg"
+  "assets/p2.jpg","assets/p6.jpg","assets/p5.jpg","assets/p4.jpg","assets/p3.jpg",
+  "assets/p13.jpg","assets/p9.jpg","assets/p8.jpg","assets/p7.jpg","assets/p16.jpg",
+  "assets/p15.jpg","assets/p14.jpg","assets/p10.jpg",
+  "assets/p1.jpg","assets/p17.jpg"
 ];
 
 /* Post verisi: hepsi Fatoş'un paylaşımları */
 const POSTS = IMG.map((src,i)=>({
   user:"fatosdursun",
-  avatar: IMG[0],    // p1’i avatar olarak kullan
+  avatar: IMG[assets/p6.jpg],    // p1’i avatar olarak kullan
   img: src,
   caption: "Gönderi " + (i+1),
-  time: i<3 ? (i===0?"şimdi": i===1?"2s":"5s") : (i<6?"1g":"2g")
+  time: i<3 ? (i===0?"3g": i===1?"2h":"5h") : (i<6?"10h":"20h")
 }));
 
 /* sayaç */
