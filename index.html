@@ -26,22 +26,25 @@ a{color:var(--accent);text-decoration:none}
 /* üst bar */
 .topbar{
   position: fixed; top:0; left:0; right:0; z-index:50;
+  height: calc(var(--topbar-h) + constant(safe-area-inset-top, 0px));
   height: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
+  padding-top: constant(safe-area-inset-top, 0px);
   padding-top: env(safe-area-inset-top, 0px);
-  background: #0e121b;              /* opak siyah */
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: flex-end;  /* .row’u alta hizala */
+  background:#0e121b;              /* opak—şerit çizgisi kalmaz */
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:flex-end;
 }
-  body{
+ body{
+  /* iOS standalone’da çentiği hesaba kat */
+  padding-top: calc(var(--topbar-h) + constant(safe-area-inset-top, 0px));
   padding-top: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
-    }
+}
 .row{
-  max-width: var(--maxw);
-  height: var(--topbar-h);
-  margin: 0 auto;
+  max-width:var(--maxw);
+  height:var(--topbar-h);
+  margin:0 auto;
   display:flex; align-items:center; justify-content:space-between;
-  padding: 0 16px;                   /* dikey padding yok */
+  padding:0 16px;                   /* dikey padding yok */
 }
 .brand{font-weight:800}
   .brand{
