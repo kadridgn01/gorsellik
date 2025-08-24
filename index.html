@@ -24,14 +24,15 @@ a{color:var(--accent);text-decoration:none}
 
 /* üst bar */
 .topbar{
-  position: fixed;  
-  top: 0; left: 0; right: 0;
-  z-index: 20;
+  position: fixed;
+  top:0; left:0; right:0;
+  z-index:20;
   height: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
-  padding-top: env(safe-area-inset-top, 0px);
-  background: rgba(18,21,28,.9);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(18,21,28,1); /* daha koyu ve tam dolu */
+  padding-top: env(safe-area-inset-top, 0px); /* çentiğe göre içerik */
+  display:flex;
+  align-items:flex-end; /* yazıyı aşağı hizala */
+  border-bottom:1px solid var(--border);
 }
 .row{
   max-width: var(--maxw);
@@ -56,7 +57,8 @@ a{color:var(--accent);text-decoration:none}
 
 .bottombar {
   position: fixed;
-  bottom:0; left:0; right:0;
+  bottom: env(safe-area-inset-bottom, 0px); /* iOS alt barı hesaba kat */
+  left:0; right:0;
   height:60px;
   background: var(--paper);
   border-top:1px solid var(--border);
@@ -64,7 +66,9 @@ a{color:var(--accent);text-decoration:none}
   justify-content:space-around;
   align-items:center;
   z-index:30;
+  padding-bottom: 6px; /* biraz yukarı çekilmiş gibi olur */
 }
+
 .nav-item {
   display:flex;
   flex-direction:column;
@@ -79,7 +83,7 @@ a{color:var(--accent);text-decoration:none}
   color:var(--muted);
 }
 body {
-  padding-bottom: 70px; /* içerik nav barın altına gizlenmesin */
+  padding-bottom: 80px; /* içerik nav barın altına gizlenmesin */
 }
 
 
@@ -122,7 +126,7 @@ body {
   <div class="row">
     <div class="brand">
       <img src="assets/logo.png" alt="logo" class="logo">
-      Görselik
+
     </div>
   </div>
 </div>
