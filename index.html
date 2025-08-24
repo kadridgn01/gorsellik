@@ -90,14 +90,18 @@ const IMG = [
   "assets/p1.jpg","assets/p17.jpg"
 ];
 
-/* Post verisi: hepsi Fatoş'un paylaşımları */
-const POSTS = IMG.map((src,i)=>({
-  user:"",
-  avatar: IMG[assets/p6.jpg],    // p1’i avatar olarak kullan
+// Profil adı ve avatarını tek yerde tanımla:
+const USER   = "yilmazdursun5353";
+const AVATAR = "assets/p6.jpg";
+
+const POSTS = IMG.map((src, i) => ({
+  user: USER,
+  avatar: AVATAR,   // artık string yol
   img: src,
-  caption: "" + (i+1),
-  time: i<3 ? (i===0?"3g": i===1?"2h":"5h") : (i<6?"10h":"20h")
+  caption: "Gönderi " + (i + 1),
+  time: i < 3 ? (i === 0 ? "3g" : i === 1 ? "2h" : "5h") : (i < 6 ? "10h" : "20h")
 }));
+
 
 /* sayaç */
 document.getElementById('postCount').textContent = POSTS.length;
