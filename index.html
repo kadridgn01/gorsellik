@@ -5,171 +5,124 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Fatoş Dursun — Profil</title>
 <style>
-  :root{
-    --bg:#0f1115; --paper:#12151c; --ink:#e7e9ee; --muted:#9aa3af;
-    --accent:#5da9ff; --border:#1f2330; --soft:#181c25; --radius:16px;
-    --maxw:980px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--ink);
-    font:15px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",sans-serif}
+:root{
+  --bg:#0f1115; --paper:#12151c; --ink:#e7e9ee; --muted:#9aa3af;
+  --accent:#5da9ff; --border:#1f2330; --soft:#181c25; --radius:14px;
+  --maxw:600px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",sans-serif}
+a{color:var(--accent);text-decoration:none}
 
-  /* üst bar */
-  .topbar{position:sticky;top:0;z-index:10;background:rgba(18,21,28,.85);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-  .row{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;
-    gap:12px;padding:10px 14px}
-  .brand{font-weight:800}
-  .spacer{flex:1}
-  .tag{border:1px solid var(--border);background:var(--soft);color:var(--muted);
-    padding:4px 10px;border-radius:999px;font-size:13px;text-decoration:none}
+/* üst bar */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(18,21,28,.9);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.row{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;padding:10px 14px}
+.brand{font-weight:800}
 
-  /* profil başlığı */
-  .wrap{max-width:var(--maxw);margin:18px auto;padding:0 14px}
-  .header{display:grid;grid-template-columns:120px 1fr auto;gap:18px;align-items:center;
-    background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
-  .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;
-    border:3px solid var(--soft);background:#0b0e13}
-  .name{font-size:22px;font-weight:800;margin:0}
-  .handle{color:var(--muted);margin-top:2px}
-  .meta{display:flex;gap:18px;margin-top:8px;color:var(--muted)}
-  .meta b{color:var(--ink)}
-  .bio{margin-top:8px}
-  .btn{border:1px solid var(--border);background:var(--soft);color:var(--ink);
-    padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600}
-  .btn[disabled]{opacity:.6;cursor:default}
-  .btn.primary{background:var(--accent);border-color:var(--accent);color:#0b0e13}
+/* profil header */
+.header{max-width:var(--maxw);margin:0 auto;padding:16px;display:flex;
+  flex-wrap:wrap;gap:16px;align-items:center;background:var(--paper);
+  border-bottom:1px solid var(--border)}
+.avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;
+  border:3px solid var(--soft)}
+.info{flex:1;min-width:200px}
+.name{font-size:20px;font-weight:800;margin:0}
+.handle{color:var(--muted);font-size:14px;margin-top:2px}
+.meta{display:flex;gap:14px;margin-top:6px;color:var(--muted);font-size:14px}
+.meta b{color:var(--ink)}
+.bio{margin-top:6px;font-size:14px}
+.actions{margin-left:auto}
+.btn{border:1px solid var(--border);background:var(--soft);color:var(--ink);
+  padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#0b0e13}
+.btn[disabled]{opacity:.6;cursor:default}
 
-  /* görsel grid */
-  .grid{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  @media (max-width:820px){ .grid{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:520px){ .grid{grid-template-columns:1fr} }
-  .card{position:relative;aspect-ratio:1/1;background:#0b0e13;
-    border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer}
-  .card img{width:100%;height:100%;object-fit:cover;display:block}
-  .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px}
-
-  /* lightbox */
-  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;
-    align-items:center;justify-content:center;z-index:1000}
-  .lightbox img{max-width:90%;max-height:90%;border-radius:12px;
-    box-shadow:0 12px 40px rgba(0,0,0,.6)}
-  .lightbox .close{position:absolute;top:20px;right:30px;font-size:40px;color:#fff;cursor:pointer}
-  .lightbox .nav{position:absolute;top:50%;transform:translateY(-50%);
-    font-size:48px;color:#fff;cursor:pointer;user-select:none;padding:20px}
-  .lightbox .prev{left:20px} .lightbox .next{right:20px}
+/* akış */
+.feed{max-width:var(--maxw);margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:18px}
+.post{background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.post .head{display:flex;align-items:center;gap:10px;padding:10px}
+.post .head img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--soft)}
+.post .head .user{font-weight:600}
+.post .head .time{margin-left:auto;color:var(--muted);font-size:12px}
+.post img.media{width:100%;display:block;object-fit:cover;max-height:420px}
+.post .actions{display:flex;gap:10px;padding:8px 10px}
+.icon{cursor:pointer;font-size:20px}
+.post .caption{padding:0 12px 10px;font-size:14px}
+.post .caption b{margin-right:6px}
 </style>
 </head>
 <body>
 
-<!-- üst bar -->
-<div class="topbar">
-  <div class="row">
-    <div class="brand">Görselik</div>
-    <div class="spacer"></div>
-    <a class="tag" href="#">Keşfet</a>
+<div class="topbar"><div class="row"><div class="brand">Görselik</div></div></div>
+
+<!-- profil header -->
+<section class="header">
+  <img class="avatar" id="avatar" src="assets/fatos.jpg" alt="Fatoş Dursun">
+  <div class="info">
+    <h1 class="name">Fatoş Dursun</h1>
+    <div class="handle">@fatosdursun</div>
+    <div class="meta">
+      <div><b id="postCount">0</b> gönderi</div>
+      <div><b id="friendCount">128</b> arkadaş</div>
+    </div>
+    <div class="bio">Kentsel detaylar, prova notları ve set günlükleri.</div>
   </div>
-</div>
+  <div class="actions">
+    <button id="friendBtn" class="btn primary">Arkadaş ekle</button>
+  </div>
+</section>
 
-<main class="wrap">
-  <!-- profil başlığı -->
-  <section class="header">
-    <img class="avatar" id="avatar" src="assets/fatos.jpg" alt="Fatoş Dursun">
-    <div>
-      <h1 class="name">Fatoş Dursun</h1>
-      <div class="handle">@fatosdursun</div>
-      <div class="meta">
-        <div><b id="postCount">15</b> gönderi</div>
-        <div><b id="friendCount">128</b> arkadaş</div>
-        <div><b>İstanbul</b></div>
-      </div>
-      <div class="bio">Kentsel detaylar, prova notları ve set günlükleri.</div>
-    </div>
-    <div>
-      <button id="friendBtn" class="btn primary">Arkadaş ekle</button>
-    </div>
-  </section>
-
-  <!-- görsel grid -->
-  <section id="grid" class="grid"></section>
-</main>
-
-<!-- Lightbox modal -->
-<div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
-  <img id="lightbox-img" src="" alt="">
-  <div class="nav prev">&#10094;</div>
-  <div class="nav next">&#10095;</div>
-</div>
+<!-- post akışı -->
+<section id="feed" class="feed"></section>
 
 <script>
-/* ---------- GÖRSELLERİNİ BURAYA YAZ ---------- */
-const IMAGES = [
-  "assets/p1.jpg","assets/p2.jpg","assets/p3.jpg","assets/p4.jpg","assets/p5.jpg",
-  "assets/p6.jpg","assets/p7.jpg","assets/p8.jpg","assets/p9.jpg","assets/p10.jpg",
-  "assets/p11.jpg","assets/p12.jpg","assets/p13.jpg","assets/p14.jpg","assets/p15.jpg"
+/* görselleri ve post verilerini burada listele */
+const POSTS = [
+  {user:"fatosdursun", avatar:"assets/fatos.jpg", img:"assets/p1.jpg", caption:"Bir prova anı", time:"2s"},
+  {user:"fatosdursun", avatar:"assets/fatos.jpg", img:"assets/p2.jpg", caption:"Sokak ışıkları", time:"5s"},
+  {user:"fatosdursun", avatar:"assets/fatos.jpg", img:"assets/p3.jpg", caption:"Eski defterler", time:"1g"},
+  // ... toplam 15 tane yazabilirsin
 ];
-document.getElementById('avatar').src = "assets/fatos.jpg";
-/* --------------------------------------------- */
 
-/* grid render */
-const grid = document.getElementById('grid');
-const postCountEl = document.getElementById('postCount');
-postCountEl.textContent = IMAGES.length;
-IMAGES.forEach((path,i)=>{
-  const card = document.createElement('figure');
-  card.className = 'card';
-  const img = document.createElement('img');
-  img.alt = `Gönderi ${i+1}`;
-  img.src = path;
-  img.onerror = ()=>{ img.remove(); const ph=document.createElement('div');
-    ph.className='ph'; ph.textContent=path+' (bulunamadı)'; card.appendChild(ph); };
-  card.appendChild(img);
-  card.addEventListener('click', ()=>openLightbox(i));
-  grid.appendChild(card);
+document.getElementById('postCount').textContent = POSTS.length;
+
+/* feed oluştur */
+const feed = document.getElementById('feed');
+POSTS.forEach(p=>{
+  const post = document.createElement('article');
+  post.className="post";
+  post.innerHTML=`
+    <div class="head">
+      <img src="${p.avatar}" alt="${p.user}">
+      <div class="user">${p.user}</div>
+      <div class="time">${p.time}</div>
+    </div>
+    <img class="media" src="${p.img}" alt="${p.caption}">
+    <div class="actions">
+      <span class="icon">❤️</span>
+      <span class="icon">💬</span>
+      <span class="icon">↗</span>
+    </div>
+    <div class="caption"><b>${p.user}</b> ${p.caption}</div>
+  `;
+  feed.appendChild(post);
 });
 
 /* arkadaş ekle butonu */
-const btn = document.getElementById('friendBtn');
-const friendCountEl = document.getElementById('friendCount');
-let isFriend = false;
-btn.addEventListener('click', ()=>{
+const btn=document.getElementById('friendBtn');
+const friendCount=document.getElementById('friendCount');
+let isFriend=false;
+btn.onclick=()=>{
   if(isFriend) return;
-  isFriend = true;
-  btn.textContent = "Arkadaşsınız";
+  isFriend=true;
+  btn.textContent="Arkadaşsınız";
   btn.classList.remove('primary');
-  btn.setAttribute('disabled','true');
-  friendCountEl.textContent = Number(friendCountEl.textContent) + 1;
-});
-
-/* lightbox */
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lightbox-img');
-const closeBtn = lb.querySelector('.close');
-const prevBtn = lb.querySelector('.prev');
-const nextBtn = lb.querySelector('.next');
-let currentIndex = 0;
-
-function openLightbox(i){
-  currentIndex = i;
-  lbImg.src = IMAGES[i];
-  lb.style.display = 'flex';
-}
-function closeLightbox(){ lb.style.display='none'; }
-function showNext(){ currentIndex=(currentIndex+1)%IMAGES.length; lbImg.src=IMAGES[currentIndex]; }
-function showPrev(){ currentIndex=(currentIndex-1+IMAGES.length)%IMAGES.length; lbImg.src=IMAGES[currentIndex]; }
-
-closeBtn.onclick = closeLightbox;
-nextBtn.onclick = showNext;
-prevBtn.onclick = showPrev;
-lb.onclick = e=>{ if(e.target===lb) closeLightbox(); }
-document.addEventListener('keydown', e=>{
-  if(lb.style.display!=='none'){
-    if(e.key==='Escape') closeLightbox();
-    if(e.key==='ArrowRight') showNext();
-    if(e.key==='ArrowLeft') showPrev();
-  }
-});
+  btn.disabled=true;
+  friendCount.textContent=Number(friendCount.textContent)+1;
+};
 </script>
 </body>
 </html>
