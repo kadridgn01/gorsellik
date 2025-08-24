@@ -17,6 +17,7 @@
   --accent:#5da9ff; --border:#1f2330; --soft:#181c25; --radius:14px;
   --maxw:600px;
 }
+:root { --topbar-h: 64px; }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);
   font:15px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",sans-serif}
@@ -24,49 +25,42 @@ a{color:var(--accent);text-decoration:none}
 
 /* üst bar */
 .topbar{
-  position: fixed;
-  top:0; left:0; right:0;
-  z-index:20;
+  position: fixed; top:0; left:0; right:0; z-index:50;
   height: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
-  background: rgba(18,21,28,1); /* daha koyu ve tam dolu */
-  padding-top: env(safe-area-inset-top, 0px); /* çentiğe göre içerik */
-  display:flex;
-  align-items:flex-end; /* yazıyı aşağı hizala */
-  border-bottom:1px solid var(--border);
+  padding-top: env(safe-area-inset-top, 0px);
+  background: #0e121b;              /* opak siyah */
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-end;  /* .row’u alta hizala */
 }
+  body{
+  padding-top: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
+    }
 .row{
   max-width: var(--maxw);
   height: var(--topbar-h);
   margin: 0 auto;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  padding: 0 14px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0 16px;                   /* dikey padding yok */
 }
 .brand{font-weight:800}
-  .brand {
-  font-weight:800;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:18px;
+  .brand{
+  display:flex; align-items:center; gap:10px;
+  font-weight:800; font-size:20px; letter-spacing:.2px;
 }
-.logo {
-  height:28px;
-  width:auto;
-}
+.logo{ height:28px; width:auto; display:block; }
 
-.bottombar {
+.bottombar{
   position: fixed;
-  bottom: env(safe-area-inset-bottom, 0px); /* iOS alt barı hesaba kat */
-  left:0; right:0;
-  height:60px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 8px); /* home bar’dan 8px yukarı */
+  left:10px; right:10px;              /* kenarlardan biraz içeri alalım */
+  height:58px;
   background: var(--paper);
-  border-top:1px solid var(--border);
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
+  border:1px solid var(--border);
+  border-radius:14px;
+  display:flex; justify-content:space-around; align-items:center;
   z-index:30;
-  padding-bottom: 6px; /* biraz yukarı çekilmiş gibi olur */
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
 .nav-item {
@@ -82,9 +76,7 @@ a{color:var(--accent);text-decoration:none}
   margin-top:2px;
   color:var(--muted);
 }
-body {
-  padding-bottom: 80px; /* içerik nav barın altına gizlenmesin */
-}
+body{ padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
 
 
 /* profil header */
